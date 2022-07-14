@@ -1,4 +1,4 @@
-# LiveViewTodos
+# ToDo_List
 
 To start your Phoenix server:
 
