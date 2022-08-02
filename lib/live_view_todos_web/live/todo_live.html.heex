@@ -1,44 +1,15 @@
 
-<section class="todoapp">
-    <header class="header">
-      <h1>todos</h1>
-      <input class="new-todo" placeholder="What needs to be done?" autofocus="" />
-    </header>
-    <section class="main" style="display: block;">
-      <input id="toggle-all" class="toggle-all" type="checkbox" />
-      <label for="toggle-all">Mark all as complete</label>
-      <ul class="todo-list">
-        <li data-id="1590167947253" class="">
-          <div class="view">
-            <input class="toggle" type="checkbox" />
-            <label>Learn how to build a Todo list in Phoenix</label>
-            <button class="destroy"></button>
-          </div>
-        </li>
-        <li data-id="1590167956628" class="completed">
-          <div class="view">
-            <input class="toggle" type="checkbox" />
-            <label>Completed item</label>
-            <button class="destroy"></button>
-          </div>
-        </li>
-      </ul>
-    </section>
-    <footer class="footer" style="display: block;">
-      <span class="todo-count"><strong>1</strong> item left</span>
-      <ul class="filters">
-        <li>
-          <a href="#/" class="selected">All</a>
-        </li>
-        <li>
-          <a href="#/active">Active</a>
-        </li>
-        <li>
-          <a href="#/completed">Completed</a>
-        </li>
-      </ul>
-      <button class="clear-completed" style="display: block;">
-        Clear completed
-      </button>
-    </footer>
-  </section>
+ <h1>Todo List</h1>
+<form action="#" phx-submit="add">
+  <%= text_input :todo, :title, placeholder: "What do you want to get done?" %>
+  <%= submit "Add", phx_disable_with: "Adding..." %></form>
+<%= for todo <- @todos do %>
+<%= checkbox(:todo, :done, phx_click: "toggle_done", phx_value_id: todo.id, value: todo.done) %>
+
+<div><%= todo.title %></div>
+
+    
+
+
+
+<% end %>

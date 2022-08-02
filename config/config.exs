@@ -15,7 +15,8 @@ config :live_view_todos, LiveViewTodosWeb.Endpoint,
   url: [host: "localhost"],
   render_errors: [view: LiveViewTodosWeb.ErrorView, accepts: ~w(html json), layout: false],
   pubsub_server: LiveViewTodos.PubSub,
-  live_view: [signing_salt: "Tk3aZbAJ"]
+  live_view: [signing_salt: "Tk3aZbAJ"],
+  force_ssl: [rewrite_on: [:x_forwarded_proto]]
 
 # Configures the mailer
 #
@@ -26,6 +27,8 @@ config :live_view_todos, LiveViewTodosWeb.Endpoint,
 # at the `config/runtime.exs`.
 config :live_view_todos, LiveViewTodos.Mailer, adapter: Swoosh.Adapters.Local
 
+config :live_view_todos, LiveViewTodos.Repo,
+  ssl :true
 # Swoosh API client is needed for adapters other than SMTP.
 config :swoosh, :api_client, false
 
